@@ -30,6 +30,10 @@
             display: 'Oled',
             heardTrack: true,
             sleeptrack: true
+        },
+        bick: {
+            model: 'r15',
+            cc: '150'
         }
     };
 }
