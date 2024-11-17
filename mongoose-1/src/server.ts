@@ -8,7 +8,7 @@ const mailDB = async () => {
         app.listen(config.PORT, () => {
             console.log(`Server is running http://localhost:${config.PORT}`)
         })
-        console.log('Database is connection')
+        console.log('Database is connections')
     } catch (error) {
         console.log(error)
     }

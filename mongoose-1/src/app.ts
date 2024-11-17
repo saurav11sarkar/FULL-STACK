@@ -7,7 +7,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors());
 
 app.get('/', (req: Request, res: Response) => {
-  res.status(200).send('Hello worlds');
+  res.status(200).send('Hello world');
 });
 
 export default app;
