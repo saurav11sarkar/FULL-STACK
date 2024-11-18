@@ -46,5 +46,5 @@ const studentSingleGet = async (req: Request, res: Response) => {
 export const studentController = {
   studentPost,
   studentAllGet,
-  studentSingleGet
+  studentSingleGet,
 };
