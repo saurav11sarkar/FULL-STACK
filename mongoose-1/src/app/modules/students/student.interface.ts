@@ -10,7 +10,7 @@ export type Guardian = {
 
 export type UserName = {
   firstName: string;
-  middleName?: string; // Made optional
+  middleName?: string;
   lastName: string;
 };
 
