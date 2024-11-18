@@ -1,27 +1,31 @@
+// student.interface.ts
 export type Guardian = {
   fatherName: string;
   fatherOccupation: string;
-  fitherContactNo: string;
+  fatherContactNo: string;
   motherName: string;
   motherOccupation: string;
   motherContactNo: string;
 };
+
 export type UserName = {
   firstName: string;
-  middleName: string;
+  middleName?: string; // Made optional
   lastName: string;
 };
+
 export type LocalGuardian = {
-   name:string;
-   occupation:string;
-   contactNo:string; 
-}
+  name: string;
+  occupation: string;
+  contactNo: string;
+};
+
 export type Student = {
   id: string;
   name: UserName;
   gender: 'male' | 'female';
   dateOfBirth: string;
-  email:string;
+  email: string;
   contactNumber: string;
   emergencyContactNo: string;
   bloodGroup?: 'A+' | 'A-' | 'B+' | 'B-' | 'AB+' | 'AB-' | 'O+' | 'O-';
@@ -29,8 +33,6 @@ export type Student = {
   permamentAddress: string;
   guardian: Guardian;
   localGuardian: LocalGuardian;
-  prifuleImg?:string;
-  isActive:"active"|"blocked";
+  profileImg?: string;
+  isActive: 'active' | 'blocked';
 };
-
-
