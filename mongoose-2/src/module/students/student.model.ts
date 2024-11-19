@@ -1,4 +1,6 @@
 import mongoose from "mongoose";
+import validator from "validator";
+
 import {
   Guardian,
   LocalGuardian,
@@ -38,14 +40,31 @@ const guardianSchema = new mongoose.Schema<Guardian>({
 const userNameSchema = new mongoose.Schema<UserName>({
   firstName: {
     type: String,
-    required: [true,"First Name Is Required"],
+    required: [true, "First Name Is Required"],
+    maxlength: [10, "first name is 10 word"],
+    trim: true,
+    validate: {
+      validator: function (value: string) {
+        const fastName =
+          value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
+        return fastName === value;
+      },
+      message: "{VALUE} is not capitalize formet",
+    },
   },
   middleName: {
     type: String,
   },
   lastName: {
     type: String,
-    required: [true,"Lest Name Is Required"],
+    required: [true, "Lest Name Is Required"],
+    trim: true,
+    validate: {
+      validator: function (value: string) {
+        return validator.isAlpha(value);
+      },
+      message: "{VALUE} is not valid",
+    },
   },
 });
 
@@ -79,8 +98,8 @@ const studentSchema = new mongoose.Schema<Students>({
   gender: {
     type: String,
     enum: {
-      values:["male", "female", "other"],
-      message:"{VALUE} is not valid"
+      values: ["male", "female", "other"],
+      message: "{VALUE} is not valid",
     },
     required: true,
   },
@@ -91,6 +110,14 @@ const studentSchema = new mongoose.Schema<Students>({
   email: {
     type: String,
     required: true,
+    trim:true,
+    unique:true,
+    validate:{
+      validator:function (value:string){
+        return validator.isEmail(value)
+      },
+      message:"{VALUE} is a not email"
+    }
   },
   contactNumber: {
     type: String,
@@ -129,7 +156,6 @@ const studentSchema = new mongoose.Schema<Students>({
     default: "active",
   },
 });
-
 
 const StudentData = mongoose.model("StudentData", studentSchema);
 
