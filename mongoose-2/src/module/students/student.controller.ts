@@ -1,30 +1,38 @@
 import { Request, Response } from "express";
 import { studentServer } from "./student.server";
-import studentSchema from "./student.validation";
+import { StudentValidationSchema } from "./student.zod";
+
+// import studentSchema from "./student.validation";
 
 const studentPost = async (req: Request, res: Response) => {
   try {
-    // creatting a schema validation joi
     const { student: StudentData } = req.body;
-    const { error, value } = studentSchema.validate(StudentData);
-    if (error) {
-      res.status(500).json({
-        success: false,
-        message: "Something is worng",
-        error: error.details,
-      });
-    }
-    const result = await studentServer.studentPostServer(StudentData);
+
+    // // data validation joi
+    // const { error, value } = studentSchema.validate(StudentData);
+    // if (error) {
+    //   res.status(500).json({
+    //     success: false,
+    //     message: "Something is worng",
+    //     error: error.details,
+    //   });
+    // }
+
+    // datavalidation useing zod
+
+    const zodParseData = StudentValidationSchema.parse(StudentData)
+
+    const result = await studentServer.studentPostServer(zodParseData);
 
     res.status(201).json({
       success: true,
       message: "Created is successfully",
       data: result,
     });
-  } catch (error) {
+  } catch (error:any) {
     res.status(500).json({
       success: false,
-      message: "Something is worng",
+      message: error.message || "Something is worng",
       error: error,
     });
   }

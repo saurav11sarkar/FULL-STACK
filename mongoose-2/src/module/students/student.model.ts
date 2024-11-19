@@ -1,15 +1,20 @@
-import mongoose from "mongoose";
+import mongoose, { Model } from "mongoose";
 import validator from "validator";
+import bcrypt from "bcrypt";
+import dotenv from "dotenv";
+dotenv.config();
 
+// Import interfaces
 import {
-  Guardian,
-  LocalGuardian,
-  Students,
-  UserName,
+  StudentMethods,
+  TGuardian,
+  TLocalGuardian,
+  TStudents,
+  TUserName,
 } from "./student.interface";
 
 // Define Guardian sub-schema
-const guardianSchema = new mongoose.Schema<Guardian>({
+const guardianSchema = new mongoose.Schema<TGuardian>({
   fatherName: {
     type: String,
     required: true,
@@ -37,19 +42,19 @@ const guardianSchema = new mongoose.Schema<Guardian>({
 });
 
 // Define UserName sub-schema
-const userNameSchema = new mongoose.Schema<UserName>({
+const userNameSchema = new mongoose.Schema<TUserName>({
   firstName: {
     type: String,
-    required: [true, "First Name Is Required"],
-    maxlength: [10, "first name is 10 word"],
+    required: [true, "First Name is required"],
+    maxlength: [10, "First name cannot exceed 10 characters"],
     trim: true,
     validate: {
       validator: function (value: string) {
-        const fastName =
+        const formattedName =
           value.charAt(0).toUpperCase() + value.slice(1).toLowerCase();
-        return fastName === value;
+        return formattedName === value;
       },
-      message: "{VALUE} is not capitalize formet",
+      message: "{VALUE} is not in capitalized format",
     },
   },
   middleName: {
@@ -57,19 +62,17 @@ const userNameSchema = new mongoose.Schema<UserName>({
   },
   lastName: {
     type: String,
-    required: [true, "Lest Name Is Required"],
+    required: [true, "Last Name is required"],
     trim: true,
     validate: {
-      validator: function (value: string) {
-        return validator.isAlpha(value);
-      },
-      message: "{VALUE} is not valid",
+      validator: (value: string) => validator.isAlpha(value),
+      message: "{VALUE} is not a valid name",
     },
   },
 });
 
 // Define LocalGuardian sub-schema
-const localGuardianSchema = new mongoose.Schema<LocalGuardian>({
+const localGuardianSchema = new mongoose.Schema<TLocalGuardian>({
   name: {
     type: String,
     required: true,
@@ -85,11 +88,18 @@ const localGuardianSchema = new mongoose.Schema<LocalGuardian>({
 });
 
 // Define Students schema
-const studentSchema = new mongoose.Schema<Students>({
+const studentSchema = new mongoose.Schema<TStudents, StudentMethods>({
   id: {
     type: String,
     required: true,
     unique: true,
+  },
+  password: {
+    type: String,
+    required: true,
+    trim: true,
+    maxlength: [30, "Maxmun 30 word"],
+    minlength: [3, "Miniman 3 word"],
   },
   name: {
     type: userNameSchema,
@@ -97,10 +107,7 @@ const studentSchema = new mongoose.Schema<Students>({
   },
   gender: {
     type: String,
-    enum: {
-      values: ["male", "female", "other"],
-      message: "{VALUE} is not valid",
-    },
+    enum: ["male", "female", "other"],
     required: true,
   },
   dateOfBirth: {
@@ -110,14 +117,12 @@ const studentSchema = new mongoose.Schema<Students>({
   email: {
     type: String,
     required: true,
-    trim:true,
-    unique:true,
-    validate:{
-      validator:function (value:string){
-        return validator.isEmail(value)
-      },
-      message:"{VALUE} is a not email"
-    }
+    trim: true,
+    unique: true,
+    validate: {
+      validator: (value: string) => validator.isEmail(value),
+      message: "{VALUE} is not a valid email",
+    },
   },
   contactNumber: {
     type: String,
@@ -157,6 +162,28 @@ const studentSchema = new mongoose.Schema<Students>({
   },
 });
 
-const StudentData = mongoose.model("StudentData", studentSchema);
+// pre save middleware: will work on create() save()
+studentSchema.pre("save", async function (next) {
+  // hashing password
+  const user = this;
+  user.password =  await bcrypt.hash(user.password, Number(process.env.BCRTPT_SALT_ROUNT));
+  next()
+});
+
+// post save middleware
+studentSchema.post("save", function () {
+  console.log(this, "post hook: we saved our data");
+});
+
+// Creating a custom static method
+studentSchema.statics.isUserExists = async function (id: string) {
+  return await this.findOne({ id });
+};
+
+// Model creation
+const StudentData = mongoose.model<TStudents, StudentMethods>(
+  "StudentData",
+  studentSchema
+);
 
 export default StudentData;
