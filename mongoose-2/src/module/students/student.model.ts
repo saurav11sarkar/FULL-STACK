@@ -160,19 +160,46 @@ const studentSchema = new mongoose.Schema<TStudents, StudentMethods>({
     enum: ["active", "blocked"],
     default: "active",
   },
+  isDeleted: {
+    type: Boolean,
+    default: false,
+  },
+},{toJSON:{virtuals:true}});
+
+// virtual
+studentSchema.virtual("fullName").get(function () {
+  return `${this.name.firstName} ${this.name.middleName} ${this.name.lastName}`;
 });
 
 // pre save middleware: will work on create() save()
 studentSchema.pre("save", async function (next) {
   // hashing password
   const user = this;
-  user.password =  await bcrypt.hash(user.password, Number(process.env.BCRTPT_SALT_ROUNT));
-  next()
+  user.password = await bcrypt.hash(
+    user.password,
+    Number(process.env.BCRTPT_SALT_ROUNT)
+  );
+  next();
 });
 
 // post save middleware
-studentSchema.post("save", function () {
-  console.log(this, "post hook: we saved our data");
+studentSchema.post("save", function (doc, next) {
+  doc.password = "";
+  next();
+});
+
+// Query middleware
+studentSchema.pre("find", function (next) {
+  this.find({ isDeleted: { $ne: true } });
+  next();
+});
+studentSchema.pre("findOne", function (next) {
+  this.find({ isDeleted: { $ne: true } });
+  next();
+});
+studentSchema.pre("aggregate", function (next) {
+  this.pipeline().unshift({ $match: { isDeleted: { $ne: true } } });
+  next();
 });
 
 // Creating a custom static method

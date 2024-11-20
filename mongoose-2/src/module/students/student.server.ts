@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 import { TStudents } from "./student.interface";
 import StudentData from "./student.model";
 
@@ -23,12 +24,25 @@ const studentAllServer = async () => {
 };
 
 const studentSingleServer = async (_id: string) => {
-  const singleId = await StudentData.findOne({ _id });
-  return singleId;
+  // const singleId = await StudentData.findOne({ _id });
+  // return singleId;
+  const objectId = new mongoose.Types.ObjectId(_id);
+  const result = await StudentData.aggregate([
+    {
+      $match: {_id:objectId}
+    }
+  ]) 
+  return result;
+};
+
+const studentDelete = async (_id: string) => {
+  const result = await StudentData.updateOne({ _id }, { isDeleted: true });
+  return result;
 };
 
 export const studentServer = {
   studentPostServer,
   studentAllServer,
   studentSingleServer,
+  studentDelete,
 };
