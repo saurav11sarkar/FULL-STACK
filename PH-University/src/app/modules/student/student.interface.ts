@@ -37,8 +37,11 @@ export type TStudents = {
   guardian: TGuardian;
   localGuardian: TLocalGuardian;
   profileImg?: string;
+  admissionSemester: Types.ObjectId;
+  academicDeperment: Types.ObjectId;
   isDeleted: boolean;
 };
+
 
 export interface TStudentModel extends Model<TStudents> {
   isUserExits(id: string): Promise<TStudents | null>;

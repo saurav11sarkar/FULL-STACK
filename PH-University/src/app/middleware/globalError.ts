@@ -12,8 +12,10 @@ export const golobalError = (
   res: Response,
   next: NextFunction,
 ) => {
-  res.status(500).json({
+  const statusCode = err.statusCode || 500;
+  res.status(statusCode).json({
     success: false,
     message: (err as Error).message || 'Something went worng',
+    error:err
   });
 };
