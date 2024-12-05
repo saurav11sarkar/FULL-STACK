@@ -13,7 +13,6 @@ app.use(cors());
 app.use('/api/v1', router);
 
 
-
 // error handler
 app.use(pageError);
 app.use(golobalError);
