@@ -3,16 +3,30 @@ import StudentModel from './student.model';
 import AppError from '../../errors/appError';
 import User from '../user/user.model';
 import { TStudents } from './student.interface';
+import QueryBulder from '../../builder/QueryBuilder';
+import { studentSerchFild } from './student.constant';
 
-const getAllStudentFromDB = async () => {
-  const result = await StudentModel.find()
-    .populate('admissionSemester')
-    .populate({
-      path: 'academicDeperment',
-      populate: {
-        path: 'academicFaculty',
-      },
-    });
+const getAllStudentFromDB = async (query: Record<string, unknown>) => {
+
+  const studentQuery = new QueryBulder(
+    StudentModel.find()
+      .populate('admissionSemester')
+      .populate({
+        path: 'academicDeperment',
+        populate: {
+          path: 'academicFaculty',
+        },
+      }),
+    query,
+  )
+    .search(studentSerchFild)
+    .filter()
+    .sort()
+    .paginate()
+    .fields();
+
+  const result = await studentQuery.modelQuery;
+
   return result;
 };
 
@@ -25,6 +39,7 @@ const getSingleStudentFromDB = async (id: string) => {
         path: 'academicFaculty',
       },
     });
+
   return result;
 };
 
@@ -57,10 +72,14 @@ const updateStudentFromDB = async (id: string, payload: Partial<TStudents>) => {
     }
   }
 
-  const result = await StudentModel.findOneAndUpdate({ id }, modifiedUpdateData, {
-    new: true,
-    runValidators:true
-  });
+  const result = await StudentModel.findOneAndUpdate(
+    { id },
+    modifiedUpdateData,
+    {
+      new: true,
+      runValidators: true,
+    },
+  );
   return result;
 };
 
