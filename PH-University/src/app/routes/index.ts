@@ -7,6 +7,8 @@ import { academicDepermentsRouter } from '../modules/academicDepartment/Academic
 import { FacultyRoutes } from '../modules/faculty/faculty.routers';
 import { AdminRoutes } from '../modules/admin/admin router';
 import { CourseRouter } from '../modules/course/course.router';
+import { SemesterRegistarRouter } from '../modules/semesterRegistation/semesterRegistation.router';
+import { OfferedCourseRoutes } from '../modules/offeredCourse/offerCourse.router';
 const router = express.Router();
 
 router.use('/students', studentRouter);
@@ -17,5 +19,7 @@ router.use('/academic-deperments', academicDepermentsRouter);
 router.use('/faculties', FacultyRoutes);
 router.use('/admins', AdminRoutes);
 router.use('/courses', CourseRouter);
+router.use('/semesters',SemesterRegistarRouter);
+router.use('/offered-courses',OfferedCourseRoutes);
 
 export default router;

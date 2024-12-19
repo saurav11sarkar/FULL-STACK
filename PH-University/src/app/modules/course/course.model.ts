@@ -1,5 +1,5 @@
 import mongoose, { model, Schema } from 'mongoose';
-import { TCourse, TPreRequisiteCorses } from './course.interface';
+import { TCourse, TCourseFaculty, TPreRequisiteCorses } from './course.interface';
 
 const preRequisteCoursesSchema = new Schema<TPreRequisiteCorses>({
   course: {
@@ -43,5 +43,23 @@ const courseSchema = new mongoose.Schema<TCourse>(
   { timestamps: true },
 );
 
-const Course = model<TCourse>('Course', courseSchema);
-export default Course;
+export const Course = model<TCourse>('Course', courseSchema);
+
+
+const courseFacultySchema = new mongoose.Schema<TCourseFaculty>(
+  {
+    course: {
+      type: Schema.Types.ObjectId,
+      ref:'Course',
+      unique:true
+    },
+    faculties: [{
+      type:Schema.Types.ObjectId,
+      ref:"Faculty"
+    }],
+    
+  },
+  { timestamps: true },
+);
+
+export const CourseFaculty = model<TCourseFaculty>('CourseFaculty',courseFacultySchema);
