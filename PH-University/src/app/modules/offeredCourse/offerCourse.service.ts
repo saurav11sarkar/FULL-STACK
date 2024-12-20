@@ -6,6 +6,7 @@ import { Faculty } from '../faculty/faculty.model';
 import { SemesterRegistation } from '../semesterRegistation/semesterRegistation.model';
 import { TOfferedCourse } from './offerCourse.interface';
 import { OfferedCourse } from './offerCourse.model';
+import { hasTimeConflict } from './offeredCourse.utils';
 
 const createOfferedCourseIntoDB = async (payload: TOfferedCourse) => {
   const {
@@ -83,21 +84,69 @@ const createOfferedCourseIntoDB = async (payload: TOfferedCourse) => {
     endTime,
   };
 
-  assignedSchedule.forEach((schedule) => {
-    const existStartTime = new Date(`1970-01-01T${schedule.startTime}`);
-    const existEndTime = new Date(`1970-01-01T${schedule.endTime}`);
-    const newStartTime = new Date(`1970-01-01T${newSchedule.startTime}`);
-    const newEndTime = new Date(`1970-01-01T${newSchedule.endTime}`);
-
-    if (newStartTime < existEndTime && newEndTime > existStartTime){
-      throw new AppError(400, 'Schedule conflict');
-    }
-  })
+  if (hasTimeConflict(assignedSchedule, newSchedule)) {
+    throw new AppError(400, 'Schedule conflict');
+  }
 
   const result = await OfferedCourse.create({ ...payload, academicSemester });
   return result;
 };
 
+const updateOfferedCourseIntoDB = async (
+  id: string,
+  payload: Pick<TOfferedCourse, 'faculty' | 'days' | 'startTime' | 'endTime'>,
+) => {
+  const { faculty, days, startTime, endTime } = payload;
+
+  const isOfferedCourseExist = await OfferedCourse.findById(id);
+  if (!isOfferedCourseExist) {
+    throw new AppError(404, 'Offered course is not found');
+  }
+
+  const isFacultyExist = await Faculty.findById(faculty);
+  if (!isFacultyExist) {
+    throw new AppError(404, 'Faculty is not found');
+  }
+
+  const semesterRegistration = isOfferedCourseExist.semesterRegistration;
+
+  const semesterRegistationStatus =
+    await SemesterRegistation.findById(semesterRegistration);
+
+  if (semesterRegistationStatus?.status === 'UPCOMING') {
+    throw new AppError(400, `You can't update offered course ${semesterRegistationStatus?.status}`);
+  }
+
+  const assignedSchedule = await OfferedCourse.find({
+    semesterRegistration,
+    faculty,
+    days: { $in: days },
+  }).select('days startTime endTime');
+
+  const newSchedule = {
+    days,
+    startTime,
+    endTime,
+  };
+
+  if (hasTimeConflict(assignedSchedule, newSchedule)) {
+    throw new AppError(400, 'Schedule conflict');
+  }
+
+  const result = await OfferedCourse.findByIdAndUpdate(id, payload, {
+    new: true,
+  });
+
+  return result;
+};
+
+const getAllOfferedCourseFromDB = async () => {
+  const result = await OfferedCourse.find({});
+  return result;
+};
+
 export const OfferedCourseService = {
   createOfferedCourseIntoDB,
+  updateOfferedCourseIntoDB,
+  getAllOfferedCourseFromDB
 };

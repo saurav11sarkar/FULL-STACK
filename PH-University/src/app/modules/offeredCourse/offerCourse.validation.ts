@@ -1,6 +1,22 @@
 import { z } from 'zod';
 import { Days } from './offerCourse.constan';
 
+const timeStrungSchema = z.string().refine(
+  (time) => {
+    const regex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
+    return regex.test(time);
+  },
+  { message: 'Start time is not valid' },
+);
+
+const timeStrungSchema2 = z.string().refine(
+  (time) => {
+    const regex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
+    return regex.test(time);
+  },
+  { message: 'End time is not valid' },
+);
+
 const createOfferedCoursevalidationSchema = z.object({
   body: z
     .object({
@@ -13,20 +29,8 @@ const createOfferedCoursevalidationSchema = z.object({
       maxCapacity: z.number(),
       section: z.number(),
       days: z.array(z.enum([...Days] as [string, ...string[]])),
-      startTime: z.string().refine(
-        (time) => {
-          const regex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
-          return regex.test(time);
-        },
-        { message: 'Start time is not valid' },
-      ),
-      endTime: z.string().refine(
-        (time) => {
-          const regex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
-          return regex.test(time);
-        },
-        { message: 'End time is not valid' },
-      ),
+      startTime: timeStrungSchema,
+      endTime: timeStrungSchema2,
     })
     .refine(
       (body) => {
@@ -40,12 +44,12 @@ const createOfferedCoursevalidationSchema = z.object({
 
 const updateOfferedCoursevalidationSchema = z.object({
   body: z.object({
-    faculty: z.string().optional(),
-    maxCapacity: z.number().optional(),
-    section: z.number().optional(),
+    faculty: z.string(),
+    maxCapacity: z.number(),
+    section: z.number(),
     days: z.array(z.enum([...Days] as [string, ...string[]]).optional()),
-    startTime: z.string().optional(),
-    endTime: z.string().optional(),
+    startTime: timeStrungSchema,
+    endTime: timeStrungSchema2,
   }),
 });
 
