@@ -57,6 +57,8 @@ const createUserNameValidationSchema = z.object({
       }),
     }),
   });
+
+  
   
   export const studentValidations = {
     createFacultyValidationSchema,

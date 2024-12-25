@@ -9,6 +9,7 @@ import { AdminRoutes } from '../modules/admin/admin router';
 import { CourseRouter } from '../modules/course/course.router';
 import { SemesterRegistarRouter } from '../modules/semesterRegistation/semesterRegistation.router';
 import { OfferedCourseRoutes } from '../modules/offeredCourse/offerCourse.router';
+import { AuthRoutes } from '../modules/auth/auth.router';
 const router = express.Router();
 
 router.use('/students', studentRouter);
@@ -21,5 +22,6 @@ router.use('/admins', AdminRoutes);
 router.use('/courses', CourseRouter);
 router.use('/semesters',SemesterRegistarRouter);
 router.use('/offered-courses',OfferedCourseRoutes);
+router.use('/auth',AuthRoutes)
 
 export default router;

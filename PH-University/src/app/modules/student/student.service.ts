@@ -10,7 +10,7 @@ const getAllStudentFromDB = async (query: Record<string, unknown>) => {
 
   const studentQuery = new QueryBulder(
     StudentModel.find()
-      .populate('admissionSemester')
+      .populate('user')
       .populate({
         path: 'academicDeperment',
         populate: {
