@@ -25,7 +25,7 @@ const userNameSchema = z.object({
 // Main Zod schema for student
 const createStudentSchema = z.object({
   body: z.object({
-    password: z.string().min(1, 'Password is required'),
+    password: z.string().min(1, 'Password is required').optional(),
     student: z.object({
       name: userNameSchema,
       gender: z.enum(['male', 'female', 'other']),
@@ -39,7 +39,7 @@ const createStudentSchema = z.object({
       guardian: guardianSchema,
       localGuardian: localGuardianSchema.optional(),
       admissionSemester: z.string(),
-      academicDeperment:z.string(),
+      // academicDeperment:z.string(),
       profileImg: z.string().optional(),
     }),
   }),
