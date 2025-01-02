@@ -7,18 +7,17 @@ const routes = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    children:[
-        {
-            index:true,
-            element:<Tasks/>
-        },
-        {
-            path:'/user',
-            element:<User/>
-        },
-    ]
+    children: [
+      {
+        index: true,
+        element: <Tasks />,
+      },
+      {
+        path: "/user",
+        element: <User />,
+      },
+    ],
   },
 ]);
-
 
 export default routes;
