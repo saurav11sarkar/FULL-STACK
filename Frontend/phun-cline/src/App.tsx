@@ -1,9 +1,12 @@
 import MainLayout from "./components/layout/MainLayout";
+import ProcotedRoute from "./components/layout/ProcotedRoute";
 
 const App = () => {
   return (
     <>
-      <MainLayout/>
+      <ProcotedRoute>
+        <MainLayout />
+      </ProcotedRoute>
     </>
   );
 };
