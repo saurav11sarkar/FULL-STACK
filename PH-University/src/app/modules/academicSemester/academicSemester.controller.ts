@@ -11,11 +11,12 @@ const createAcademicSemester = catchAsync(async (req, res) => {
 });
 
 const allAcademicSemesters = catchAsync(async (req, res) => {
-  const result = await AcademicService.allAcademicSemesters();
+  const result = await AcademicService.allAcademicSemesters(req.query);
   res.status(200).json({
     success: true,
     message: 'All academic semester',
-    data: result,
+    mata: result.meta,
+    data: result.result,
   });
 });
 
