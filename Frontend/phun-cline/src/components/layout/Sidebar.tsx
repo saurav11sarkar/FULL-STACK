@@ -12,9 +12,7 @@ const userRole = {
 };
 
 const Sidebar = () => {
-  
-  const user = useAppSelector(selectCurrentUser)
-  
+  const user = useAppSelector(selectCurrentUser) as any;
 
   let sidebarItems;
   switch (user!.role) {
@@ -34,7 +32,8 @@ const Sidebar = () => {
   return (
     <Sider
       breakpoint="lg"
-      collapsedWidth="0" style={{height:'100vh', position:'sticky',top:'0',left:'0'}}
+      collapsedWidth="0"
+      style={{ height: "100vh", position: "sticky", top: "0", left: "0" }}
       // onBreakpoint={(broken) => {
       //   console.log(broken);
       // }}

@@ -7,6 +7,9 @@ import { semesterOption } from "../../../constrants/semester";
 import { monthOption } from "../../../constrants/global";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { academicSemesterSchema } from "../../../schema/academicManesment.shema";
+import { useAddAcademicSemesterMutation } from "../../../redux/features/admin/academicManesment";
+import { toast } from "sonner";
+import { TResponse } from "../../../typs/globalType";
 
 const currentYear = new Date().getFullYear();
 const yearOption = [0, 1, 2, 3, 4].map((number) => ({
@@ -14,9 +17,11 @@ const yearOption = [0, 1, 2, 3, 4].map((number) => ({
   label: String(currentYear + number),
 }));
 
-
 const CreateAcademicSemester = () => {
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  const [addAcademicSemester] = useAddAcademicSemesterMutation();
+
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
+    const toastId = toast.loading("Creating...");
     const name = semesterOption[Number(data?.name) - 1]?.label;
     const semesterData = {
       name,
@@ -25,15 +30,26 @@ const CreateAcademicSemester = () => {
       startMonth: data.startMonth,
       endMonth: data.endMonth,
     };
-    console.log(semesterData);
+    try {
+      const res = await addAcademicSemester(semesterData) as TResponse;
+      console.log(res);
+      if (res.error) {
+        toast.error(res.error.data.message, { id: toastId });
+      }else{
+        toast.success("Academic Semester Created", { id: toastId });
+      }
+    } catch (error) {
+      toast.error("something went wrong", { id: toastId });
+    }
   };
-
-  
 
   return (
     <Flex align="center" justify="center">
       <Col span={6}>
-        <PHform onSubmit={onSubmit} resolver={zodResolver(academicSemesterSchema)}>
+        <PHform
+          onSubmit={onSubmit}
+          resolver={zodResolver(academicSemesterSchema)}
+        >
           <PHselect label="Name" name="name" option={semesterOption}></PHselect>
           <PHselect label="Year" name="year" option={yearOption}></PHselect>
           <PHselect
