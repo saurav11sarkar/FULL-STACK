@@ -1,15 +1,18 @@
-import { TResponseRedux } from "../../../typs";
+import { TQueryPrams, TResponseRedux } from "../../../typs";
 import { TAcademicSemester } from "../../../typs/academicMenesment.type";
 import { baseApi } from "../../api/baseApi";
 
 const academicManagement = baseApi.injectEndpoints({
   endpoints: (builder) => ({
+
+    
     getAllSemester: builder.query({
       query: (args) => {
         const params = new URLSearchParams();
         if (args.length > 0) {
-          args.forEach((arg:{name: string, value: string}) => params.append(arg.name, arg.value));
-          
+          args.forEach((arg: TQueryPrams) =>
+            params.append(arg.name, arg.value as string)
+          );
         }
         return {
           url: "/academic-semesters/create-academic-semester",
@@ -22,6 +25,7 @@ const academicManagement = baseApi.injectEndpoints({
         return { data: response.data, mata: response.mata };
       },
     }),
+
     addAcademicSemester: builder.mutation({
       query: (data) => ({
         url: "/academic-semesters/create-academic-semester",
@@ -29,6 +33,9 @@ const academicManagement = baseApi.injectEndpoints({
         body: data,
       }),
     }),
+
+
+
   }),
 });
 
