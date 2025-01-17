@@ -1,35 +1,43 @@
-import { baseApi } from "../../api/baseApi";
+// import { TQueryParam, TResponseRedux, TStudent } from '../../../types';
 
-const usermanagementApi = baseApi.injectEndpoints({
+// import { TResponseRedux } from '../../../typs';
+import { baseApi } from '../../api/baseApi';
+
+const userManagementApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    // getAllSemester: builder.query({
+    // getAllStudents: builder.query({
     //   query: (args) => {
+    //     console.log(args);
     //     const params = new URLSearchParams();
-    //     if (args.length > 0) {
-    //       args.forEach((arg: TQueryPrams) =>
-    //         params.append(arg.name, arg.value as string)
-    //       );
+
+    //     if (args) {
+    //       args.forEach((item: TQueryParam) => {
+    //         params.append(item.name, item.value as string);
+    //       });
     //     }
+
     //     return {
-    //       url: "/academic-semesters/create-academic-semester",
-    //       method: "GET",
+    //       url: '/students',
+    //       method: 'GET',
     //       params: params,
     //     };
     //   },
-    //   transformResponse: (response: TResponseRedux<TAcademicSemester[]>) => {
-    //     // console.log("inside transform", response);
-    //     return { data: response.data, mata: response.mata };
+    //   transformResponse: (response: TResponseRedux<TStudent[]>) => {
+    //     return {
+    //       data: response.data,
+    //       mata: response.mata,
+    //     };
     //   },
     // }),
-
     addStudent: builder.mutation({
       query: (data) => ({
-        url: "/users/create-student",
-        method: "POST",
+        url: '/users/create-student',
+        method: 'POST',
         body: data,
       }),
     }),
   }),
 });
 
-export const { useAddStudentMutation } = usermanagementApi;
+export const { useAddStudentMutation } =
+  userManagementApi;

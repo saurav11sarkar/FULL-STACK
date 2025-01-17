@@ -27,3 +27,5 @@ export type TQueryPrams = {
   name: string;
   value: boolean | React.Key;
 };
+
+
