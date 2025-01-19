@@ -1,7 +1,7 @@
-import {  FieldValues, SubmitHandler } from "react-hook-form";
+import { Controller, FieldValues, SubmitHandler } from "react-hook-form";
 import PHform from "../../../components/form/PHform";
 import PHinput from "../../../components/form/PHinput";
-import { Button, Col, Divider,  Row } from "antd";
+import { Button, Col, Divider, Form, Input, Row } from "antd";
 import PHselect from "../../../components/form/PHselect";
 import { bloodGroupOptions, genderOptions } from "../../../constrants/global";
 import PHdatePicker from "../../../components/form/PHdatePicker";
@@ -48,13 +48,13 @@ import { useAddStudentMutation } from "../../../redux/features/admin/userManesme
 
 const studentDefaultValues = {
   name: {
-    firstName: "Miaa",
-    middleName: "Jsa",
-    lastName: "Taylorsa",
+    firstName: "Mssaa",
+    middleName: "Mssa",
+    lastName: "yslorsa",
   },
   gender: "female",
-  dateOfBirth: "",
-  email: "miass.taylor@exampleaa.com",
+  // dateOfBirth: "",
+  email: "iassf123@gmail.com",
   contactNumber: "01708099962",
   emergencyContactNo: "01708099966",
   bloodGroup: "B+",
@@ -73,9 +73,9 @@ const studentDefaultValues = {
     occupation: "Accountant",
     contactNo: "01708099969",
   },
-  admissionSemester: "",
-  academicDeperment: "",
-  profileImg: "",
+  // admissionSemester: "",
+  // academicDeperment: "",
+  // profileImg: "",
 };
 
 const CreateStudent = () => {
@@ -100,16 +100,14 @@ const CreateStudent = () => {
   }));
 
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    console.log(data);
     const studentData = {
       password: "student123",
       student: data,
     };
-
     const formData = new FormData();
-
     formData.append("data", JSON.stringify(studentData));
-    formData.append("file", data.image);
-
+    formData.append("file", data.profileImg);
     addStudent(formData);
 
     //! This is for development
@@ -145,8 +143,24 @@ const CreateStudent = () => {
                 label="Blood group"
               />
             </Col>
+
+            <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
+              <Controller
+                name="profileImg"
+                render={({ field: { onChange,value, ...field } }) => (
+                  <Form.Item label="Profile Image">
+                    <Input
+                      type="file"
+                      value={value?.fileName}
+                      {...field}
+                      onChange={(e) => onChange(e.target.files?.[0])}
+                    />
+                  </Form.Item>
+                )}
+              ></Controller>
+            </Col>
           </Row>
-          
+
           <Divider>Contact Info.</Divider>
           <Row gutter={8}>
             <Col span={24} md={{ span: 12 }} lg={{ span: 8 }}>
@@ -259,7 +273,7 @@ const CreateStudent = () => {
               <PHselect
                 option={departmentOptions}
                 disabled={dIsLoading}
-                name="academicDepartment"
+                name="academicDeperment"
                 label="Admission Department"
               />
             </Col>

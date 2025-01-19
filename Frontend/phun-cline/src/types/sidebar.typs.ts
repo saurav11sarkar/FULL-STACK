@@ -12,8 +12,8 @@ export interface IUserPath {
   children?: IUserPath[];
 }
 
-export interface ISidebar {
+export type ISidebar = {
     key: string;
     label: ReactNode;
     children?: ISidebar[];
-  }
+  } | undefined;
