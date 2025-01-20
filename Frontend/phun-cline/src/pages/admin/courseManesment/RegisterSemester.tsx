@@ -1,4 +1,4 @@
-import { Button, Table, Tag } from "antd";
+import { Button, Dropdown, Table, Tag } from "antd";
 import type { TableColumnsType } from "antd";
 import { useGetAllRegisterSemesterQuery } from "../../../redux/features/admin/courseManesment";
 import moment from "moment";
@@ -10,6 +10,21 @@ type DataType = {
   startDate: string;
   endDate: string;
 };
+
+const items = [
+  {
+    label: "UPCOMING",
+    key: "UPCOMING",
+  },
+  {
+    label: "ONGOING",
+    key: "ONGOING",
+  },
+  {
+    label: "ENDED",
+    key: "ENDED",
+  },
+];
 
 const RegisterSemester = () => {
   const { data: semesterData, isFetching } =
@@ -26,6 +41,15 @@ const RegisterSemester = () => {
       })
     ) || [];
 
+  const handleStattusDropdown = (data: any) => {
+    console.log( data);
+  };
+
+  const menuProps = {
+    items,
+    onClick: handleStattusDropdown,
+  };
+
   const columns: TableColumnsType<DataType> = [
     {
       title: "Name",
@@ -40,9 +64,9 @@ const RegisterSemester = () => {
         let color;
         if (item === "UPCOMING") {
           color = "green";
-        }else if (item === "ONGOING") {
+        } else if (item === "ONGOING") {
           color = "blue";
-        }else if (item === "ENDED") {
+        } else if (item === "ENDED") {
           color = "red";
         }
         return <Tag color={color}>{item}</Tag>;
@@ -61,14 +85,10 @@ const RegisterSemester = () => {
     {
       title: "Action",
       key: "action",
-      render: (_, record) => (
-        <Button
-          onClick={() => {
-            console.log("Update clicked for:", record.key);
-          }}
-        >
-          Update
-        </Button>
+      render: () => (
+        <Dropdown menu={menuProps}>
+          <Button>Update</Button>
+        </Dropdown>
       ),
     },
   ];
