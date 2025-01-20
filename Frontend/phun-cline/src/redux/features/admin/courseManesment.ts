@@ -35,4 +35,7 @@ const courseMenasmentApi = baseApi.injectEndpoints({
   }),
 });
 
-export const {useAddRegisterSemesterMutation, useGetAllRegisterSemesterQuery} = courseMenasmentApi;
+export const {
+  useAddRegisterSemesterMutation,
+  useGetAllRegisterSemesterQuery,
+} = courseMenasmentApi;

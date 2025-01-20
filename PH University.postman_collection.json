@@ -1,0 +1,1446 @@
+{
+	"info": {
+		"_postman_id": "faf31eb6-31d5-4400-927b-30d8afe3dbf5",
+		"name": "PH University",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38675905"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "student",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBLTAwMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzU1Mjg1NDIsImV4cCI6MTczNTYxNDk0Mn0.30rltxJSiCfaR0FeS-JHJ7ZjrRmEI9sZXPDB0FUpkhs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1efae698-1b84-4130-8827-e3adf44de378"
+								},
+								{
+									"key": "data",
+									"value": "{ \"password\": \"securePass890\", \"student\": { \"name\": { \"firstName\": \"Mia\", \"middleName\": \"J\", \"lastName\": \"Taylor\" }, \"gender\": \"female\", \"dateOfBirth\": \"2001-06-25\", \"email\": \"mia.taylor@example.com\", \"contactNumber\": \"01708099965\", \"emergencyContactNo\": \"01708099966\", \"bloodGroup\": \"B+\", \"presentAddress\": \"505 Oak St, Dhaka\", \"permamentAddress\": \"505 Oak St, Dhaka\", \"guardian\": { \"fatherName\": \"Alexander Taylor\", \"fatherOccupation\": \"Engineer\", \"fatherContactNo\": \"01708099967\", \"motherName\": \"Charlotte Taylor\", \"motherOccupation\": \"Teacher\", \"motherContactNo\": \"01708099968\" }, \"localGuardian\": { \"name\": \"Emily Brown\", \"occupation\": \"Accountant\", \"contactNo\": \"01708099969\" }, \"admissionSemester\": \"674dc4d3954d4e9dbae84b17\", \"academicDeperment\": \"674ea22806cb5090a55a9b61\", \"profileImg\": \"https://example.com/profiles/mia_taylor.jpg\" } }",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/create-student",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"create-student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "postman-cloud:///1ef9bfa3-e6ee-4900-b5c3-07602bccdd3f"
+								},
+								{
+									"key": "data",
+									"value": "{ \"password\": \"securePass678\", \"admin\": { \"designation\": \"Administrator\", \"name\": { \"firstName\": \"Emma\", \"middleName\": \"F\", \"lastName\": \"Green\" }, \"gender\": \"female\", \"dateOfBirth\": \"1983-09-15T00:00:00.000Z\", \"email\": \"emma.green@examples.com\", \"contactNo\": \"01708099931\", \"emergencyContactNo\": \"01708099932\", \"bloogGroup\": \"B-\", \"presentAddress\": \"303 Birch St, Dhaka\", \"permanentAddress\": \"303 Birch St, Dhaka\", \"profileImg\": \"https://example.com/profiles/emma_green.jpg\", \"isDeleted\": false } }",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/create-admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"create-admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "faculty",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBLTAwMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzU1Mjg1NDIsImV4cCI6MTczNTYxNDk0Mn0.30rltxJSiCfaR0FeS-JHJ7ZjrRmEI9sZXPDB0FUpkhs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/D:/PHOTO/1000005958-013.jpeg"
+								},
+								{
+									"key": "data",
+									"value": "{ \"password\": \"securePass678\", \"faculty\": { \"designation\": \"Professor\", \"name\": { \"firstName\": \"Emma\", \"middleName\": \"F\", \"lastName\": \"Green\" }, \"gender\": \"female\", \"dateOfBirth\": \"1983-09-15T00:00:00.000Z\", \"email\": \"emma.green@example.com\", \"contactNo\": \"01708099931\", \"emergencyContactNo\": \"01708099932\", \"bloogGroup\": \"B-\", \"presentAddress\": \"303 Birch St, Dhaka\", \"permanentAddress\": \"303 Birch St, Dhaka\", \"profileImg\": \"https://example.com/profiles/emma_green.jpg\", \"academicDepartment\": \"674ea22806cb5090a55a9b61\", \"isDeleted\": false } }",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/create-faculty",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"create-faculty"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get me",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyMDMwMDEwMDAxIiwicm9sZSI6InN0dWRlbnQiLCJpYXQiOjE3MzU1Mjg2MDgsImV4cCI6MTczNTYxNTAwOH0.E1Bz88Rhl3UYJsbhXXFF5v7B8LKvIzceCZWaZbCD43c",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change status",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBLTAwMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzU1Mjg1NDIsImV4cCI6MTczNTYxNDk0Mn0.30rltxJSiCfaR0FeS-JHJ7ZjrRmEI9sZXPDB0FUpkhs",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"in-progress\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/users/change-status/2030010001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"users",
+								"change-status",
+								"2030010001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Adademic",
+			"item": [
+				{
+					"name": "create-semester",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Autumn\",\r\n    \"code\": \"01\",\r\n    \"year\": \"2030\",\r\n    \"startMonth\": \"January\",\r\n    \"endMonth\": \"June\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/academic-semesters/create-academic-semester",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"academic-semesters",
+								"create-academic-semester"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Semester",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/academic-semesters/create-academic-semester",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"academic-semesters",
+								"create-academic-semester"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single semster",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/academic-semesters/create-academic-semester/674c6a5771d76fc70928aaa9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"academic-semesters",
+								"create-academic-semester",
+								"674c6a5771d76fc70928aaa9"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update semester",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Summar\",\r\n    \"code\": \"02\",\r\n    \"year\": \"2031\",\r\n    \"startMonth\": \"January\",\r\n    \"endMonth\": \"June\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/academic-semesters/create-academic-semester/674c6a5771d76fc70928aaa9",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"academic-semesters",
+								"create-academic-semester",
+								"674c6a5771d76fc70928aaa9"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "student",
+			"item": [
+				{
+					"name": "all student",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/students",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"students"
+							],
+							"query": [
+								{
+									"key": "searchTerm",
+									"value": "Charlie",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "charlie.brown@example.com",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "name,email",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "limit",
+									"value": "1",
+									"disabled": true
+								},
+								{
+									"key": "sort",
+									"value": "-email,dateOfBirth",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single student",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyMDMwMDEwMDAxIiwicm9sZSI6InN0dWRlbnQiLCJpYXQiOjE3MzU1Mjg2MDgsImV4cCI6MTczNTYxNTAwOH0.E1Bz88Rhl3UYJsbhXXFF5v7B8LKvIzceCZWaZbCD43c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/students/2030010002",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"2030010002"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/students/2030010001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"2030010001"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"student\": {\r\n        \"name\": {\r\n            \"middleName\": \"C\"\r\n        },\r\n        \"gender\": \"male\",\r\n        \"dateOfBirth\": \"2000-06-22\",\r\n        \"email\": \"bob.smith@example.com\",\r\n        \"contactNumber\": \"01708099931\",\r\n        \"emergencyContactNo\": \"01708099932\",\r\n        \"bloodGroup\": \"O+\",\r\n        \"presentAddress\": \"789 Pine St, Dhaka\",\r\n        \"permamentAddress\": \"789 Pine St, Dhaka\",\r\n        \"guardian\": {\r\n            \"fatherName\": \"John Smith\",\r\n            \"fatherOccupation\": \"Architect\",\r\n            \"fatherContactNo\": \"01708099933\",\r\n            \"motherName\": \"Nancy Smith\",\r\n            \"motherOccupation\": \"Teacher\",\r\n            \"motherContactNo\": \"01708099934\"\r\n        },\r\n        \"localGuardian\": {\r\n            \"name\": \"Henry White\",\r\n            \"occupation\": \"Doctor\",\r\n            \"contactNo\": \"01708099935\"\r\n        },\r\n        \"admissionSemester\": \"674dc4d3954d4e9dbae84b17\",\r\n        \"academicDeperment\": \"674ea22806cb5090a55a9b61\",\r\n        \"profileImg\": \"https://example.com/profiles/bob_smith.jpg\"\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/students/2030010001",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"students",
+								"2030010001"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "facultes",
+			"item": [
+				{
+					"name": "Facultys",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/academic-faculties/create-academic-faculty",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"academic-faculties",
+								"create-academic-faculty"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Faculty of Science and Information Technology\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/academic-faculties/create-academic-faculty",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"academic-faculties",
+								"create-academic-faculty"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/academic-faculties/create-academic-faculty/674e86262d7e03f0df442eeb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"academic-faculties",
+								"create-academic-faculty",
+								"674e86262d7e03f0df442eeb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Faculty of Health and Life Sciences\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/academic-faculties/create-academic-faculty/674e86262d7e03f0df442eeb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"academic-faculties",
+								"create-academic-faculty",
+								"674e86262d7e03f0df442eeb"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "depermetns",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/academic-deperments/create-academic-deperment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"academic-deperments",
+								"create-academic-deperment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crate deperments",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Department of Computer Science & Engineering\",\r\n    \"academicFaculty\": \"674e85a32d7e03f0df442ee6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/academic-deperments/create-academic-deperment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"academic-deperments",
+								"create-academic-deperment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single deprements",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/academic-deperments/create-academic-deperment/674ea22806cb5090a55a9b61",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"academic-deperments",
+								"create-academic-deperment",
+								"674ea22806cb5090a55a9b61"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Department of Computer Science & Engineering\",\r\n    \"academicFaculty\": \"674e85a32d7e03f0df442ee6\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/academic-deperments/create-academic-deperment/674ea22806cb5090a55a9b61",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"academic-deperments",
+								"create-academic-deperment",
+								"674ea22806cb5090a55a9b61"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "admin",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/admins/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"admins",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/admins/6754840096a5e328c2cfb9b0",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"admins",
+								"6754840096a5e328c2cfb9b0"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "faculty",
+			"item": [
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBLTAwMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzUxMDY2OTQsImV4cCI6MTczNTk3MDY5NH0.9xiVH2t11fjKHO6HRHynznPhLyDzd93D4Ag2VcTey4Y",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/faculties/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"faculties",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "course",
+			"item": [
+				{
+					"name": "create-course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Dom Manipulation\",\r\n    \"prefix\": \"JS\",\r\n    \"code\": 108,\r\n    \"credits\": 3,\r\n    \"preRequisteCourses\": [\r\n        {\r\n            \"course\": \"6755aee3ac40bd7035dd80e2\"\r\n        },\r\n        {\r\n            \"course\": \"6755ac350153e3df3379bf06\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/courses/create-course",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"create-course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/courses/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "single Course",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/courses/6755810bfe42761218c05658",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"6755810bfe42761218c05658"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update course",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Hyper text Markup Language\",\r\n    \"prefix\": \"HTML\",\r\n    \"code\": 101,\r\n    \"credits\": 3,\r\n    \"preRequisteCourses\": [\r\n        {\r\n            \"course\":\"675580f2fe42761218c05656\",\r\n            \"isDeleted\":false\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/courses/6755810bfe42761218c05658",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"6755810bfe42761218c05658"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "assasint faculty",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"faculties\":[\"67548a5896a5e328c2cfb9d7\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/courses/675580f2fe42761218c05656/assign-faculties",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"675580f2fe42761218c05656",
+								"assign-faculties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "remove faculty",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"faculties\":[\"67548a5896a5e328c2cfb9d7\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/courses/675580f2fe42761218c05656/remove-faculties",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"675580f2fe42761218c05656",
+								"remove-faculties"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete course",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/v1/courses/67558008b32b39276e100d36",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"courses",
+								"67558008b32b39276e100d36"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Semester",
+			"item": [
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"academicSemester\": \"674c4dfe6565782c00ab0d99\",  \r\n    \"status\": \"UPCOMING\",\r\n    \"startDate\": \"2024-01-15T00:00:00.000Z\",  \r\n    \"endDate\": \"2024-05-15T00:00:00.000Z\", \r\n    \"minCredit\": 3,\r\n    \"maxCredit\": 15\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/semesters/create-semester",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"semesters",
+								"create-semester"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"academicSemester\": \"674c4dfe6565782c00ab0d99\",  \r\n    \"status\": \"UPCOMING\",\r\n    \"startDate\": \"2024-01-15T00:00:00.000Z\",  \r\n    \"endDate\": \"2024-05-15T00:00:00.000Z\", \r\n    \"minCredit\": 3,\r\n    \"maxCredit\": 15\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/semesters/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"semesters",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get single",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"academicSemester\": \"674c4dfe6565782c00ab0d99\",  \r\n    \"status\": \"UPCOMING\",\r\n    \"startDate\": \"2024-01-15T00:00:00.000Z\",  \r\n    \"endDate\": \"2024-05-15T00:00:00.000Z\", \r\n    \"minCredit\": 3,\r\n    \"maxCredit\": 15\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/semesters/675a6cd6670d2246e45957dc",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"semesters",
+								"675a6cd6670d2246e45957dc"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"academicSemester\": \"674c4dfe6565782c00ab0d99\",  \r\n    \"status\": \"ENDED\",\r\n    \"startDate\": \"2024-01-15T00:00:00.000Z\",  \r\n    \"endDate\": \"2024-05-15T00:00:00.000Z\", \r\n    \"minCredit\": 3,\r\n    \"maxCredit\": 15\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/semesters/675a8be7642febbd6534235a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"semesters",
+								"675a8be7642febbd6534235a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "offerCourse",
+			"item": [
+				{
+					"name": "create course",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"semesterRegistration\": \"675a6cd6670d2246e45957dc\",\r\n    \"academicSemester\": \"674c4dfe6565782c00ab0d99\",\r\n    \"academicFaculty\": \"674e85a32d7e03f0df442ee6\",\r\n    \"academicDepartment\": \"674ea22806cb5090a55a9b61\",\r\n    \"course\": \"675580f2fe42761218c05656\",\r\n    \"faculty\": \"67548a5896a5e328c2cfb9d7\",\r\n    \"maxCapacity\": 30,\r\n    \"section\": 3,\r\n    \"days\": [\"Mon\", \"Wed\", \"Fri\"],\r\n    \"startTime\": \"09:00\",\r\n    \"endTime\": \"10:30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/offered-courses/create-offer-course",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"offered-courses",
+								"create-offer-course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"semesterRegistration\": \"675a6cd6670d2246e45957dc\",\r\n    // \"academicSemester\": \"674c4dfe6565782c00ab0d99\",\r\n    // \"academicFaculty\": \"674e85a32d7e03f0df442ee6\",\r\n    // \"academicDepartment\": \"674ea22806cb5090a55a9b61\",\r\n    // \"course\": \"675580f2fe42761218c05656\",\r\n    \"faculty\": \"675a6cd6670d2246e45957dc\",\r\n    \"maxCapacity\": 300,\r\n    \"section\": 3,\r\n    \"days\": [\"Mon\", \"Wed\", \"Fri\"],\r\n    \"startTime\": \"09:00\",\r\n    \"endTime\": \"10:30\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/offered-courses/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"offered-courses",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "login Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"A-0001\",\r\n    \"password\":\"securePass012\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login student",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"2030010001\",\r\n    \"password\":\"securePass012\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "change password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBLTAwMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzUwNjI3MjAsImV4cCI6MTczNTkyNjcyMH0.XddrFdZb7DbHp1B0dJSBZ_fVHuNhdf6GhLfbkOrcVdI",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\":\"securePass012\",\r\n    \"newPassword\":\"securePass012\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/change-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"change-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBLTAwMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzUwNjI3MjAsImV4cCI6MTczNTkyNjcyMH0.XddrFdZb7DbHp1B0dJSBZ_fVHuNhdf6GhLfbkOrcVdI",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/refresh-token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"refresh-token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "forget password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBLTAwMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzU0OTE4NzQsImV4cCI6MTczNTQ5MjQ3NH0.U-o0R9BNcZfXO7noCKXi4EqHd9X19osBl-Y5U2eQ8wo",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"A-0001\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/forget-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"forget-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBLTAwMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzU0OTI1NTQsImV4cCI6MTczNTQ5MzE1NH0.EPdO4rp200eJ-QVUzquhwuK0XdFJk-z60j__TOzL2bQ",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"A-0001\",\r\n    \"newPassword\":\"admin123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/auth/reset-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"auth",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Enrolled Corsed",
+			"item": [
+				{
+					"name": "create enrolledCourse",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyMDMwMDEwMDAxIiwicm9sZSI6InN0dWRlbnQiLCJpYXQiOjE3MzU3MTY3MjYsImV4cCI6MTczNTgwMzEyNn0.1X3irxAs8vZBqBUyAqmVvvrenyYlRRZvr9sTirZ89aM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"semesterRegistration\": \"675a6cd6670d2246e45957dc\",\r\n    // \"academicSemester\": \"674c4dfe6565782c00ab0d99\",\r\n    // \"academicFaculty\": \"674e85a32d7e03f0df442ee6\",\r\n    // \"academicDepertment\": \"674ea22806cb5090a55a9b61\",\r\n    // \"offeredCourse\": \"6764697746a4bc9af3d54a46\",\r\n    // \"course\": \"675580f2fe42761218c05656\",\r\n    // \"student\": \"67721083cee01e2eb82e24e8\",\r\n    // \"faculty\": \"6772a9224a21c5b85706f7f2\",\r\n    // \"isEnrolled\": false,\r\n    // \"courseMarks\": {\r\n    //     \"classTest\": 0,\r\n    //     \"midTerm\": 0,\r\n    //     \"classTest2\": 0,\r\n    //     \"finalTerm\": 0\r\n    // },\r\n    // \"grade\": \"N/A\",\r\n    // \"gradePoint\": 0,\r\n    // \"isComplete\": false\r\n    \"offeredCourse\": \"6764697746a4bc9af3d54a46\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/enrolled-courses/create-enrolled-course",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"enrolled-courses",
+								"create-enrolled-course"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
