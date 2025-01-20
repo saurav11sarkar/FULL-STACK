@@ -1,0 +1,17 @@
+meta {
+  name: assasint faculty
+  type: http
+  seq: 5
+}
+
+put {
+  url: http://localhost:5000/api/v1/courses/675580f2fe42761218c05656/assign-faculties
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "faculties":["67548a5896a5e328c2cfb9d7"]
+  }
+}

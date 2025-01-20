@@ -1,0 +1,28 @@
+meta {
+  name: create-course
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:5000/api/v1/courses/create-course
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "title": "Dom Manipulation",
+      "prefix": "JS",
+      "code": 108,
+      "credits": 3,
+      "preRequisteCourses": [
+          {
+              "course": "6755aee3ac40bd7035dd80e2"
+          },
+          {
+              "course": "6755ac350153e3df3379bf06"
+          }
+      ]
+  }
+}

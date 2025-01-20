@@ -1,0 +1,18 @@
+meta {
+  name: crate deperments
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:5000/api/v1/academic-deperments/create-academic-deperment
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "name": "Department of Computer Science & Engineering",
+      "academicFaculty": "674e85a32d7e03f0df442ee6"
+  }
+}

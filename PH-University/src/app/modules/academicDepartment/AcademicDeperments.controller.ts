@@ -14,11 +14,12 @@ const createAcademicDeperments = catchAsync(async (req, res) => {
 
 const getAllAcademicDeperments = catchAsync(async (req, res) => {
   const result =
-    await AcademicDepermentsService.getAllAcademicDepermentsFromDB();
+    await AcademicDepermentsService.getAllAcademicDepermentsFromDB(req.query);
   res.status(200).json({
     success: true,
     message: 'All Academic Deperments is hare',
-    data: result,
+    mata: result.meta,
+    data: result.result,
   });
 });
 

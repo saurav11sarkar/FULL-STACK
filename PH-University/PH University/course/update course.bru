@@ -1,0 +1,26 @@
+meta {
+  name: update course
+  type: http
+  seq: 4
+}
+
+patch {
+  url: http://localhost:5000/api/v1/courses/6755810bfe42761218c05658
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "title": "Hyper text Markup Language",
+      "prefix": "HTML",
+      "code": 101,
+      "credits": 3,
+      "preRequisteCourses": [
+          {
+              "course":"675580f2fe42761218c05656",
+              "isDeleted":false
+          }
+      ]
+  }
+}

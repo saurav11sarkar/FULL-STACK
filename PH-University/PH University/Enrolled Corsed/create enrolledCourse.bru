@@ -1,0 +1,39 @@
+meta {
+  name: create enrolledCourse
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:5000/api/v1/enrolled-courses/create-enrolled-course
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyMDMwMDEwMDAxIiwicm9sZSI6InN0dWRlbnQiLCJpYXQiOjE3MzU3MTY3MjYsImV4cCI6MTczNTgwMzEyNn0.1X3irxAs8vZBqBUyAqmVvvrenyYlRRZvr9sTirZ89aM
+}
+
+body:json {
+  {
+      // "semesterRegistration": "675a6cd6670d2246e45957dc",
+      // "academicSemester": "674c4dfe6565782c00ab0d99",
+      // "academicFaculty": "674e85a32d7e03f0df442ee6",
+      // "academicDepertment": "674ea22806cb5090a55a9b61",
+      // "offeredCourse": "6764697746a4bc9af3d54a46",
+      // "course": "675580f2fe42761218c05656",
+      // "student": "67721083cee01e2eb82e24e8",
+      // "faculty": "6772a9224a21c5b85706f7f2",
+      // "isEnrolled": false,
+      // "courseMarks": {
+      //     "classTest": 0,
+      //     "midTerm": 0,
+      //     "classTest2": 0,
+      //     "finalTerm": 0
+      // },
+      // "grade": "N/A",
+      // "gradePoint": 0,
+      // "isComplete": false
+      "offeredCourse": "6764697746a4bc9af3d54a46"
+  }
+}

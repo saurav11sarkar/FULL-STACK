@@ -10,18 +10,12 @@ router.post(
   AcademicFacultyController.createAcademicFaculty,
 );
 
-router.get(
-  '/create-academic-faculty',
-  AcademicFacultyController.getAllAcademicFaculty,
-);
+router.get('/', AcademicFacultyController.getAllAcademicFaculty);
 
-router.get(
-  '/create-academic-faculty/:facultyId',
-  AcademicFacultyController.getSingleAcademicFaculty,
-);
+router.get('/:facultyId', AcademicFacultyController.getSingleAcademicFaculty);
 
 router.patch(
-  '/create-academic-faculty/:facultyId',
+  '/:facultyId',
   validateRequest(AcademicFacultyValidation.updateAcademicFacultySchema),
   AcademicFacultyController.updateAcademicFaculty,
 );

@@ -41,6 +41,17 @@ const createStudentIntoDB = async (
       throw new Error('Academic semester not found');
     }
 
+    // find department
+  const academicDepartment = await AcademicDepartment.findById(
+    payload.academicDeperment,
+  );
+
+  if (!academicDepartment) {
+    throw new AppError(400, 'Aademic department not found');
+  }
+  // payload.academicFaculty = academicDepartment.academicFaculty;
+  payload.academicFaculty = academicDepartment.academicFaculty
+
     // transaction and rollback
     const session = await mongoose.startSession();
     try {

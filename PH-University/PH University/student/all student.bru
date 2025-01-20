@@ -1,0 +1,20 @@
+meta {
+  name: all student
+  type: http
+  seq: 1
+}
+
+get {
+  url: http://localhost:5000/api/v1/students
+  body: none
+  auth: none
+}
+
+params:query {
+  ~searchTerm: Charlie
+  ~email: charlie.brown@example.com
+  ~fields: name,email
+  ~page: 1
+  ~limit: 1
+  ~sort: -email,dateOfBirth
+}

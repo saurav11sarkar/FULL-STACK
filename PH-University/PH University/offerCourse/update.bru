@@ -1,0 +1,27 @@
+meta {
+  name: update
+  type: http
+  seq: 2
+}
+
+patch {
+  url: http://localhost:5000/api/v1/offered-courses/
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      // "semesterRegistration": "675a6cd6670d2246e45957dc",
+      // "academicSemester": "674c4dfe6565782c00ab0d99",
+      // "academicFaculty": "674e85a32d7e03f0df442ee6",
+      // "academicDepartment": "674ea22806cb5090a55a9b61",
+      // "course": "675580f2fe42761218c05656",
+      "faculty": "675a6cd6670d2246e45957dc",
+      "maxCapacity": 300,
+      "section": 3,
+      "days": ["Mon", "Wed", "Fri"],
+      "startTime": "09:00",
+      "endTime": "10:30"
+  }
+}

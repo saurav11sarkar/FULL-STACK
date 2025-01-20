@@ -1,0 +1,21 @@
+meta {
+  name: change status
+  type: http
+  seq: 5
+}
+
+post {
+  url: http://localhost:5000/api/v1/users/change-status/2030010001
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBLTAwMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzU1Mjg1NDIsImV4cCI6MTczNTYxNDk0Mn0.30rltxJSiCfaR0FeS-JHJ7ZjrRmEI9sZXPDB0FUpkhs
+}
+
+body:json {
+  {
+      "status":"in-progress"
+  }
+}

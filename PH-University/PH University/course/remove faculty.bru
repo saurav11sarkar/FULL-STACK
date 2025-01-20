@@ -1,0 +1,17 @@
+meta {
+  name: remove faculty
+  type: http
+  seq: 6
+}
+
+delete {
+  url: http://localhost:5000/api/v1/courses/675580f2fe42761218c05656/remove-faculties
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "faculties":["67548a5896a5e328c2cfb9d7"]
+  }
+}

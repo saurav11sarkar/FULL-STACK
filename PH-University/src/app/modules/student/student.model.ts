@@ -31,7 +31,7 @@ const userNameSchema = new Schema<TUserName>({
 
 const studentSchema = new Schema<TStudents, TStudentModel>(
   {
-    id: { type: String ,unique:true},
+    id: { type: String, unique: true },
     user: {
       type: Schema.Types.ObjectId,
       required: [true, 'User Id Must be Requried'],
@@ -53,12 +53,25 @@ const studentSchema = new Schema<TStudents, TStudentModel>(
     guardian: guardianSchema,
     localGuardian: localGuardianSchema,
     profileImg: { type: String },
-    admissionSemester: { type: Schema.Types.ObjectId, ref: 'AcademicSemester', },
-    academicDeperment:{type: Schema.Types.ObjectId,ref:"AcademicDepartment"},
+    admissionSemester: { type: Schema.Types.ObjectId, ref: 'AcademicSemester' },
+    academicDeperment: {
+      type: Schema.Types.ObjectId,
+      ref: 'AcademicDepartment',
+    },
     isDeleted: { type: Boolean, default: false },
   },
-  { timestamps: true },
+  { toJSON: { virtuals: true } },
 );
+
+studentSchema.virtual('fullName').get(function () {
+  return (
+    this?.name?.firstName +
+    ' ' +
+    this?.name?.middleName +
+    ' ' +
+    this?.name?.lastName
+  );
+});
 
 studentSchema.pre('find', function () {
   this.find({ isDeleted: { $ne: true } });

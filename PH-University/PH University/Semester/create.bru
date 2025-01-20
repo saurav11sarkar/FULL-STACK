@@ -1,0 +1,23 @@
+meta {
+  name: create
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:5000/api/v1/semesters/create-semester
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "academicSemester": "674c4dfe6565782c00ab0d99",  
+      "status": "UPCOMING",
+      "startDate": "2024-01-15T00:00:00.000Z",  
+      "endDate": "2024-05-15T00:00:00.000Z", 
+      "minCredit": 3,
+      "maxCredit": 15
+  }
+  
+}

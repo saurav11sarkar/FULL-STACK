@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "PH University",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

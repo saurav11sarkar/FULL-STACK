@@ -20,7 +20,8 @@ const getAllSemesterRegistrations = catchAsync(async (req, res) => {
   res.status(200).json({
     success: true,
     message: 'Semester Regisration is retrieved successfully',
-    date: result,
+    mata: result.meta,
+    data: result.result,
   });
 });
 

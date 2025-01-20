@@ -1,0 +1,16 @@
+meta {
+  name: admin
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:5000/api/v1/users/create-admin
+  body: multipartForm
+  auth: none
+}
+
+body:multipart-form {
+  file: @file(postman-cloud:///1ef9bfa3-e6ee-4900-b5c3-07602bccdd3f)
+  data: { "password": "securePass678", "admin": { "designation": "Administrator", "name": { "firstName": "Emma", "middleName": "F", "lastName": "Green" }, "gender": "female", "dateOfBirth": "1983-09-15T00:00:00.000Z", "email": "emma.green@examples.com", "contactNo": "01708099931", "emergencyContactNo": "01708099932", "bloogGroup": "B-", "presentAddress": "303 Birch St, Dhaka", "permanentAddress": "303 Birch St, Dhaka", "profileImg": "https://example.com/profiles/emma_green.jpg", "isDeleted": false } }
+}

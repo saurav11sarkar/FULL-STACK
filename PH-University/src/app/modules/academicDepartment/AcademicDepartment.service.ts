@@ -1,14 +1,28 @@
+import QueryBuilder from '../../builder/QueryBuilder';
 import { TAcademicDepartment } from './academicDepartment.interface';
 import AcademicDepartment from './academicDepartment.model';
+import { AcademicDepartmentSearchableFields } from './academicDepartmet.constant';
 
 const createAcademicDepermentsIntoDB = async (payload: TAcademicDepartment) => {
   const result = await AcademicDepartment.create(payload);
   return result;
 };
 
-const getAllAcademicDepermentsFromDB = async () => {
-  const result = await AcademicDepartment.find().populate('academicFaculty');
-  return result;
+const getAllAcademicDepermentsFromDB = async (
+  query: Record<string, unknown>,
+) => {
+  const academicDepermentQuery = new QueryBuilder(
+    AcademicDepartment.find().populate('academicFaculty'),
+    query,
+  )
+    .search(AcademicDepartmentSearchableFields)
+    .filter()
+    .sort()
+    .paginate()
+    .fields();
+const result = await academicDepermentQuery.modelQuery;
+const meta = await academicDepermentQuery.countTotal();
+  return { result, meta };
 };
 
 const getSingleAcademicDepermentsFromDB = async (id: string) => {

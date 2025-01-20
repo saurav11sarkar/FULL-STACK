@@ -27,11 +27,14 @@ const getAllStudentFromDB = async (query: Record<string, unknown>) => {
 
   const result = await studentQuery.modelQuery;
 
-  return result;
+  const meta = await studentQuery.countTotal();
+
+  return{ result, meta };
 };
 
 const getSingleStudentFromDB = async (id: string) => {
-  const result = await StudentModel.findOne({ id })
+  // const result = await StudentModel.findOne({ id })
+  const result = await StudentModel.findById(id)
     .populate('admissionSemester')
     .populate({
       path: 'academicDeperment',

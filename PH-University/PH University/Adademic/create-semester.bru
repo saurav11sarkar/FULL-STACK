@@ -1,0 +1,21 @@
+meta {
+  name: create-semester
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:5000/api/v1/academic-semesters/create-academic-semester
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "name": "Summar",
+      "code": "02",
+      "year": "2029",
+      "startMonth": "January",
+      "endMonth": "June"
+  }
+}

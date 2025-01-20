@@ -22,6 +22,7 @@ export type TUserName = {
 };
 
 export type TStudents = {
+  academicFaculty: Types.ObjectId;
   id: string;
   user: Types.ObjectId,
   password: string;

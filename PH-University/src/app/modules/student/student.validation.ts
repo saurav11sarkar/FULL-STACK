@@ -38,9 +38,9 @@ const createStudentSchema = z.object({
       permamentAddress: z.string().min(1, 'Permanent address is required'),
       guardian: guardianSchema,
       localGuardian: localGuardianSchema.optional(),
-      admissionSemester: z.string(),
+      // admissionSemester: z.string(),
       // academicDeperment:z.string(),
-      profileImg: z.string().optional(),
+      // profileImg: z.string().optional(),
     }),
   }),
 });

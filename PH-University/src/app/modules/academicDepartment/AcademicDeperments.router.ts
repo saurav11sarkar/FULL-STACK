@@ -11,19 +11,16 @@ router.post(
 );
 
 router.get(
-  '/create-academic-deperment/:depermentId',
+  '/:depermentId',
   AcademicDepermentsController.getSingleAcademicDeperments,
 );
 
 router.patch(
-  '/create-academic-deperment/:depermentId',
+  '/:depermentId',
   validateRequest(academicDepartmentValidetion.updateacademicDepartmentSchema),
   AcademicDepermentsController.updateAcademicDeperments,
 );
 
-router.get(
-  '/create-academic-deperment',
-  AcademicDepermentsController.getAllAcademicDeperments,
-);
+router.get('/', AcademicDepermentsController.getAllAcademicDeperments);
 
 export const academicDepermentsRouter = router;

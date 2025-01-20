@@ -2,7 +2,7 @@
 // import { userValidation } from './user.validation';
 import { UserService } from './user.service';
 import catchAsync from '../../utils/catchAsync';
-import AppError from '../../errors/appError';
+// import AppError from '../../errors/appError';
 
 const createStudent = catchAsync(async (req, res) => {
   // console.log(req.file,'files');

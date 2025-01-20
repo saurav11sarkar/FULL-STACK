@@ -1,0 +1,20 @@
+meta {
+  name: faculty
+  type: http
+  seq: 3
+}
+
+post {
+  url: http://localhost:5000/api/v1/users/create-faculty
+  body: multipartForm
+  auth: none
+}
+
+headers {
+  Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBLTAwMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzU1Mjg1NDIsImV4cCI6MTczNTYxNDk0Mn0.30rltxJSiCfaR0FeS-JHJ7ZjrRmEI9sZXPDB0FUpkhs
+}
+
+body:multipart-form {
+  file: @file(/D:/PHOTO/1000005958-013.jpeg)
+  data: { "password": "securePass678", "faculty": { "designation": "Professor", "name": { "firstName": "Emma", "middleName": "F", "lastName": "Green" }, "gender": "female", "dateOfBirth": "1983-09-15T00:00:00.000Z", "email": "emma.green@example.com", "contactNo": "01708099931", "emergencyContactNo": "01708099932", "bloogGroup": "B-", "presentAddress": "303 Birch St, Dhaka", "permanentAddress": "303 Birch St, Dhaka", "profileImg": "https://example.com/profiles/emma_green.jpg", "academicDepartment": "674ea22806cb5090a55a9b61", "isDeleted": false } }
+}

@@ -1,0 +1,45 @@
+meta {
+  name: update
+  type: http
+  seq: 4
+}
+
+patch {
+  url: http://localhost:5000/api/v1/students/2030010001
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "student": {
+          "name": {
+              "middleName": "C"
+          },
+          "gender": "male",
+          "dateOfBirth": "2000-06-22",
+          "email": "bob.smith@example.com",
+          "contactNumber": "01708099931",
+          "emergencyContactNo": "01708099932",
+          "bloodGroup": "O+",
+          "presentAddress": "789 Pine St, Dhaka",
+          "permamentAddress": "789 Pine St, Dhaka",
+          "guardian": {
+              "fatherName": "John Smith",
+              "fatherOccupation": "Architect",
+              "fatherContactNo": "01708099933",
+              "motherName": "Nancy Smith",
+              "motherOccupation": "Teacher",
+              "motherContactNo": "01708099934"
+          },
+          "localGuardian": {
+              "name": "Henry White",
+              "occupation": "Doctor",
+              "contactNo": "01708099935"
+          },
+          "admissionSemester": "674dc4d3954d4e9dbae84b17",
+          "academicDeperment": "674ea22806cb5090a55a9b61",
+          "profileImg": "https://example.com/profiles/bob_smith.jpg"
+      }
+  }
+}

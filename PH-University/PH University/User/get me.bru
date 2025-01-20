@@ -1,0 +1,15 @@
+meta {
+  name: get me
+  type: http
+  seq: 4
+}
+
+get {
+  url: http://localhost:5000/api/v1/users/me
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIyMDMwMDEwMDAxIiwicm9sZSI6InN0dWRlbnQiLCJpYXQiOjE3MzU1Mjg2MDgsImV4cCI6MTczNTYxNTAwOH0.E1Bz88Rhl3UYJsbhXXFF5v7B8LKvIzceCZWaZbCD43c
+}

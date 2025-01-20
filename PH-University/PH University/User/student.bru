@@ -1,0 +1,20 @@
+meta {
+  name: student
+  type: http
+  seq: 1
+}
+
+post {
+  url: http://localhost:5000/api/v1/users/create-student
+  body: multipartForm
+  auth: none
+}
+
+headers {
+  Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJBLTAwMDEiLCJyb2xlIjoiYWRtaW4iLCJpYXQiOjE3MzU1Mjg1NDIsImV4cCI6MTczNTYxNDk0Mn0.30rltxJSiCfaR0FeS-JHJ7ZjrRmEI9sZXPDB0FUpkhs
+}
+
+body:multipart-form {
+  file: @file(postman-cloud:///1efae698-1b84-4130-8827-e3adf44de378)
+  data: { "password": "securePass890", "student": { "name": { "firstName": "Mia", "middleName": "J", "lastName": "Taylor" }, "gender": "female", "dateOfBirth": "2001-06-25", "email": "mia.taylor@example.com", "contactNumber": "01708099965", "emergencyContactNo": "01708099966", "bloodGroup": "B+", "presentAddress": "505 Oak St, Dhaka", "permamentAddress": "505 Oak St, Dhaka", "guardian": { "fatherName": "Alexander Taylor", "fatherOccupation": "Engineer", "fatherContactNo": "01708099967", "motherName": "Charlotte Taylor", "motherOccupation": "Teacher", "motherContactNo": "01708099968" }, "localGuardian": { "name": "Emily Brown", "occupation": "Accountant", "contactNo": "01708099969" }, "admissionSemester": "674dc4d3954d4e9dbae84b17", "academicDeperment": "674ea22806cb5090a55a9b61", "profileImg": "https://example.com/profiles/mia_taylor.jpg" } }
+}

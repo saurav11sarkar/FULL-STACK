@@ -1,0 +1,21 @@
+meta {
+  name: update semester
+  type: http
+  seq: 4
+}
+
+patch {
+  url: http://localhost:5000/api/v1/academic-semesters/create-academic-semester/674c6a5771d76fc70928aaa9
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+      "name": "Summar",
+      "code": "02",
+      "year": "2031",
+      "startMonth": "January",
+      "endMonth": "June"
+  }
+}
