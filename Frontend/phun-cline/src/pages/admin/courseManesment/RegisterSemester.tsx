@@ -1,7 +1,11 @@
 import { Button, Dropdown, Table, Tag } from "antd";
 import type { TableColumnsType } from "antd";
-import { useGetAllRegisterSemesterQuery } from "../../../redux/features/admin/courseManesment";
+import {
+  useGetAllRegisterSemesterQuery,
+  useUpdateRegisterSemesterMutation,
+} from "../../../redux/features/admin/courseManesment";
 import moment from "moment";
+import { useState } from "react";
 
 type DataType = {
   key: string;
@@ -27,8 +31,13 @@ const items = [
 ];
 
 const RegisterSemester = () => {
+  const [semesterId, setSemesterId] = useState<string>("");
+
   const { data: semesterData, isFetching } =
     useGetAllRegisterSemesterQuery(undefined);
+
+  const [updateSemesterStatus, { isLoading: isUpdating }] =
+    useUpdateRegisterSemesterMutation();
 
   const tableData: DataType[] =
     semesterData?.data?.map(
@@ -41,13 +50,28 @@ const RegisterSemester = () => {
       })
     ) || [];
 
-  const handleStattusDropdown = (data: any) => {
-    console.log( data);
+  const handleStatusUpdate = async (data: any) => {
+    if (!semesterId) {
+      console.error("No semester selected for update.");
+      return;
+    }
+
+    try {
+      const updateData = {
+        id: semesterId,
+        data: { status: data.key },
+      };
+
+      await updateSemesterStatus(updateData).unwrap();
+      setSemesterId("");
+    } catch (error) {
+      console.error("Failed to update semester status:", error);
+    }
   };
 
   const menuProps = {
     items,
-    onClick: handleStattusDropdown,
+    onClick: handleStatusUpdate,
   };
 
   const columns: TableColumnsType<DataType> = [
@@ -85,9 +109,14 @@ const RegisterSemester = () => {
     {
       title: "Action",
       key: "action",
-      render: () => (
-        <Dropdown menu={menuProps}>
-          <Button>Update</Button>
+      render: (item) => (
+        <Dropdown menu={menuProps} trigger={["click"]}>
+          <Button
+            onClick={() => setSemesterId(item.key)}
+            loading={isUpdating && semesterId === item.key}
+          >
+            Update
+          </Button>
         </Dropdown>
       ),
     },
