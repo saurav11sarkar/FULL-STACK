@@ -15,7 +15,8 @@ const getAllCourse = catchAsync(async (req, res) => {
   res.status(200).json({
     success: true,
     message: 'Course are retrived successfuly',
-    data: result,
+    mata: result.meta,
+    data: result.result,
   });
 });
 
@@ -69,6 +70,16 @@ const removeFaculties = catchAsync(async(req,res)=>{
     message:"Faculty course remove Successfully",
     data:result 
   })
+});
+
+const getFacultiesWithCourse = catchAsync(async(req,res)=>{
+  const { courseId } = req.params;
+  const result = await CourseService.getFacultiesWithCourse(courseId);
+  res.status(200).json({
+    success:true,
+    message:"Faculty course retripe Successfully",
+    data:result 
+  })
 })
 
 export const CourseController = {
@@ -78,5 +89,6 @@ export const CourseController = {
   updateCourse,
   deleteCourse,
   assignFaculties,
-  removeFaculties
+  removeFaculties,
+  getFacultiesWithCourse
 };
