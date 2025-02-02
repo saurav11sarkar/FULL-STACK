@@ -1,0 +1,84 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "productName": "Wireless Bluetooth Headphones",
+      "category": "Electronics",
+      "brand": "Sony",
+      "price": 129.99,
+      "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e"
+    },
+    {
+      "id": 2,
+      "productName": "Running Shoes",
+      "category": "Footwear",
+      "brand": "Nike",
+      "price": 89.99,
+      "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff"
+    },
+    {
+      "id": 3,
+      "productName": "Leather Wallet",
+      "category": "Accessories",
+      "brand": "Fossil",
+      "price": 49.99,
+      "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3"
+    },
+    {
+      "id": 4,
+      "productName": "Smartwatch",
+      "category": "Electronics",
+      "brand": "Apple",
+      "price": 399.99,
+      "image": "https://images.unsplash.com/photo-1579586337278-3befd40fd17a"
+    },
+    {
+      "id": 5,
+      "productName": "Backpack",
+      "category": "Accessories",
+      "brand": "Herschel",
+      "price": 79.99,
+      "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62"
+    },
+    {
+      "id": 6,
+      "productName": "Coffee Maker",
+      "category": "Home Appliances",
+      "brand": "Keurig",
+      "price": 149.99,
+      "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46"
+    },
+    {
+      "id": 7,
+      "productName": "Yoga Mat",
+      "category": "Fitness",
+      "brand": "Gaiam",
+      "price": 29.99,
+      "image": "https://images.unsplash.com/photo-1584917865442-de89df76afd3"
+    },
+    {
+      "id": 8,
+      "productName": "Wireless Mouse",
+      "category": "Electronics",
+      "brand": "Logitech",
+      "price": 39.99,
+      "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46"
+    },
+    {
+      "id": 9,
+      "productName": "Sunglasses",
+      "category": "Accessories",
+      "brand": "Ray-Ban",
+      "price": 159.99,
+      "image": "https://images.unsplash.com/photo-1511499767150-a48a237f0083"
+    },
+    {
+      "id": 10,
+      "productName": "Electric Toothbrush",
+      "category": "Personal Care",
+      "brand": "Oral-B",
+      "price": 99.99,
+      "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46"
+    }
+  ]
+}
